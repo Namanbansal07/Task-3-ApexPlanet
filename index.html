@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="description" content="SkillSpark is a playful place to learn web development, test your knowledge, and explore the world.">
+    <title>SkillSpark — Learn, Play &amp; Explore</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/responsive.css?v=2">
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#home" aria-label="SkillSpark home">
+          <span class="brand-mark" aria-hidden="true">✦</span>
+          <span>Skill<span class="brand-accent">Spark</span></span>
+        </a>
+        <button class="menu-toggle icon-button" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
+          <span class="menu-toggle-lines" aria-hidden="true"></span>
+        </button>
+        <nav class="primary-navigation" id="primary-navigation" aria-label="Main navigation">
+          <a href="#quiz">Quiz</a>
+          <a href="#discover">Discover</a>
+          <a href="#countries">Countries</a>
+          <button class="theme-toggle icon-button" type="button" aria-label="Switch to dark theme" title="Switch theme">
+            <span class="theme-icon" aria-hidden="true">☾</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero section-shell" id="home" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> A little learning goes a long way</p>
+            <h1 id="hero-title">Curiosity is your <span class="gradient-text">superpower.</span></h1>
+            <p class="hero-description">Build your web skills, take a quick quiz, and explore somewhere new — all in one bright little corner of the internet.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#quiz">Take the quiz <span aria-hidden="true">→</span></a>
+              <a class="text-link" href="#discover">Explore the world <span aria-hidden="true">↗</span></a>
+            </div>
+            <ul class="hero-highlights" aria-label="What you can do">
+              <li><span aria-hidden="true">✓</span> Learn by doing</li>
+              <li><span aria-hidden="true">✓</span> Go at your pace</li>
+            </ul>
+          </div>
+          <div class="hero-art" aria-label="Illustration of learning and discovery">
+            <div class="hero-orbit orbit-one"></div>
+            <div class="hero-orbit orbit-two"></div>
+            <div class="hero-spark-card">
+              <span class="hero-spark-icon" aria-hidden="true">✧</span>
+              <span class="hero-spark-label">TODAY'S SPARK</span>
+              <strong>Stay curious.<br>Keep creating.</strong>
+              <span class="spark-card-bottom"><span class="spark-avatar">S</span> Your next idea is waiting</span>
+            </div>
+            <span class="floating-chip chip-code" aria-hidden="true">&lt;/&gt;</span>
+            <span class="floating-chip chip-star" aria-hidden="true">✦</span>
+            <span class="floating-chip chip-bolt" aria-hidden="true">✳</span>
+          </div>
+        </div>
+        <div class="container stats-strip" aria-label="Project highlights">
+          <div><strong>10</strong><span>quiz questions</span></div>
+          <div><strong>5</strong><span>places to discover</span></div>
+          <div><strong>∞</strong><span>ways to get curious</span></div>
+        </div>
+      </section>
+
+      <section class="section section-muted" id="quiz" aria-labelledby="quiz-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Think you know your code?</p>
+            <h2 id="quiz-title">The web skills <span class="gradient-text">quiz</span></h2>
+            <p>Ten quick questions, three familiar languages, and one satisfying brain stretch.</p>
+          </div>
+          <div class="quiz-card" id="quiz-app" aria-live="polite">
+            <div class="quiz-start" id="quiz-start">
+              <div class="quiz-start-icon" aria-hidden="true">✦</div>
+              <p class="eyebrow">Ready when you are</p>
+              <h3>Your next spark starts here.</h3>
+              <p>Explore HTML, CSS, and JavaScript in a shuffled 10-question quiz. You’ll see explanations as you go and review every answer at the end.</p>
+              <p class="best-score">Personal best: <strong id="best-score">Not yet recorded</strong></p>
+              <button class="button button-primary" id="start-quiz" type="button">Start the quiz <span aria-hidden="true">→</span></button>
+            </div>
+            <div class="quiz-play" id="quiz-play" hidden>
+              <div class="quiz-topline">
+                <span class="quiz-counter" id="question-counter">Question 1 of 10</span>
+                <span class="quiz-best">Best: <strong id="quiz-best-score">—</strong></span>
+              </div>
+              <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="quiz-progress">
+                <span class="progress-fill" id="quiz-progress-fill"></span>
+              </div>
+              <h3 class="question-title" id="question-text"></h3>
+              <fieldset class="answer-options" id="answer-options">
+                <legend class="visually-hidden">Choose one answer</legend>
+              </fieldset>
+              <div class="quiz-feedback" id="quiz-feedback" aria-live="polite" hidden></div>
+              <div class="quiz-actions">
+                <button class="button button-primary" id="submit-answer" type="button" disabled>Submit answer</button>
+                <button class="button button-primary" id="next-question" type="button" hidden>Next question <span aria-hidden="true">→</span></button>
+              </div>
+            </div>
+            <div class="quiz-results" id="quiz-results" hidden>
+              <div class="results-badge" aria-hidden="true">✦</div>
+              <p class="eyebrow">Quiz complete</p>
+              <h3 id="results-message">Nice work!</h3>
+              <p class="results-score"><strong id="results-score">0 / 10</strong><span id="results-percent">0%</span></p>
+              <p class="best-score">Personal best: <strong id="results-best-score">—</strong></p>
+              <div class="review-list" id="answer-review"></div>
+              <button class="button button-primary" id="restart-quiz" type="button">Play again <span aria-hidden="true">↻</span></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="discover" aria-labelledby="discover-title">
+        <div class="container">
+          <div class="section-heading section-heading-row">
+            <div>
+              <p class="eyebrow">A window to somewhere new</p>
+              <h2 id="discover-title">Little moments of <span class="gradient-text">wonder</span></h2>
+              <p>Take a breath and let your next idea travel.</p>
+            </div>
+            <span class="section-side-note">A new view, every few seconds <span aria-hidden="true">↗</span></span>
+          </div>
+          <div class="carousel" id="image-carousel" aria-roledescription="carousel" aria-label="A world of wonder">
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="carousel-track" aria-live="off"></div>
+              <div class="carousel-overlay">
+                <div class="slide-copy" id="slide-copy" aria-live="polite" aria-atomic="true">
+                  <p class="slide-kicker" id="slide-kicker"></p>
+                  <h3 id="slide-title"></h3>
+                  <p id="slide-caption"></p>
+                </div>
+                <div class="carousel-controls">
+                  <button class="carousel-button" type="button" id="previous-slide" aria-label="Previous slide">←</button>
+                  <button class="carousel-button" type="button" id="next-slide" aria-label="Next slide">→</button>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-footer">
+              <div class="carousel-indicators" id="carousel-indicators" aria-label="Choose a slide"></div>
+              <div class="carousel-footer-right">
+                <span id="slide-count" aria-live="polite">01 / 05</span>
+                <button class="carousel-play" id="carousel-play" type="button" aria-pressed="false">Pause <span aria-hidden="true">Ⅱ</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-muted" id="countries" aria-labelledby="countries-title">
+        <div class="container countries-layout">
+          <div class="countries-intro">
+            <p class="eyebrow">Curiosity has no borders</p>
+            <h2 id="countries-title">Explore <span class="gradient-text">countries</span></h2>
+            <p>Look up a place and discover its flag, capital, currency, and more.</p>
+            <div class="globe-decoration" aria-hidden="true">◎</div>
+          </div>
+          <div class="country-search-panel">
+            <form class="country-search" id="country-search-form">
+              <label for="country-query">Where would you like to go?</label>
+              <div class="search-control">
+                <span aria-hidden="true">⌕</span>
+                <input id="country-query" name="country" type="search" placeholder="Try Japan or Brazil" autocomplete="off">
+                <button class="button button-primary" id="country-search-button" type="submit">Search</button>
+              </div>
+            </form>
+            <div class="api-status" id="country-status" role="status" aria-live="polite">Search by a country name to get started.</div>
+            <div class="country-results" id="country-results" aria-live="polite"></div>
+            <button class="button button-secondary retry-button" id="country-retry" type="button" hidden>Retry search</button>
+            <p class="api-source-note">Using CountriesNow, a public no-key country API. This source does not provide region, population, or language data; those fields are identified as unavailable rather than estimated.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="brand footer-brand" href="#home">
+          <span class="brand-mark" aria-hidden="true">✦</span>
+          <span>Skill<span class="brand-accent">Spark</span></span>
+        </a>
+        <p>Learn something. Try something. Keep exploring.</p>
+        <span class="footer-credit">Developed by Naman Bansal</span>
+      </div>
+    </footer>
+  </body>
+</html>
